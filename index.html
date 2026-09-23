@@ -1,0 +1,132 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Personal Project Archive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loginScreen">
+  <div class="login-box">
+    <h1>PERSONAL PROJECT ARCHIVE</h1>
+    <p class="muted">Secure access</p>
+
+    <input id="username" type="text" placeholder="Username" autocomplete="username">
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+
+    <button id="loginBtn">LOGIN</button>
+    <p id="loginError" class="error"></p>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+
+  <header>
+    <div class="logo">PROJECT_ARCHIVE</div>
+
+    <nav>
+      <button data-page="home">HOME</button>
+      <button data-page="projects">PROJECTS</button>
+      <button data-page="about">ABOUT</button>
+      <button data-page="account">MY ACCOUNT</button>
+      <button id="adminNav" data-page="admin" class="hidden">ADMIN</button>
+      <button id="logoutBtn">LOGOUT</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="homePage" class="page">
+      <h2>HOME</h2>
+      <p>Personal project archive.</p>
+
+      <div class="stats">
+        <div>
+          <span id="projectCount">0</span>
+          <small>PROJECTS</small>
+        </div>
+        <div>
+          <span id="fileCount">0</span>
+          <small>FILES</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="projectsPage" class="page hidden">
+      <div class="page-title">
+        <h2>PROJECTS</h2>
+        <input id="searchInput" placeholder="Search projects...">
+      </div>
+
+      <div id="projectsList" class="projects"></div>
+    </section>
+
+    <section id="projectPage" class="page hidden">
+      <button id="backProjects">← BACK</button>
+
+      <div id="projectDetails"></div>
+    </section>
+
+    <section id="aboutPage" class="page hidden">
+      <h2>ABOUT</h2>
+      <p>This is a private project archive.</p>
+      <p>Projects and files are protected by Supabase authentication.</p>
+    </section>
+
+    <section id="accountPage" class="page hidden">
+      <h2>MY ACCOUNT</h2>
+
+      <div class="account-box">
+        <p><b>Username:</b> <span id="accountUsername"></span></p>
+        <p><b>User ID:</b> <span id="accountUserId"></span></p>
+        <p><b>Role:</b> <span id="accountRole"></span></p>
+      </div>
+    </section>
+
+    <section id="adminPage" class="page hidden">
+
+      <h2>ADMIN PANEL</h2>
+
+      <div class="admin-box">
+        <h3>CREATE PROJECT</h3>
+
+        <input id="projectName" placeholder="Project name">
+
+        <textarea id="projectDescription"
+          placeholder="Project description"></textarea>
+
+        <label>Cover image</label>
+        <input id="projectCover" type="file" accept="image/*">
+
+        <label>Project files</label>
+        <input id="projectFiles" type="file" multiple>
+
+        <button id="createProjectBtn">CREATE PROJECT</button>
+
+        <p id="uploadStatus"></p>
+      </div>
+
+      <div class="admin-box">
+        <h3>USERS</h3>
+        <div id="usersList"></div>
+      </div>
+
+      <div class="admin-box">
+        <h3>ALL PROJECTS</h3>
+        <div id="adminProjects"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <div id="toast"></div>
+
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
