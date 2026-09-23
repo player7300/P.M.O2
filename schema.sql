@@ -331,6 +331,6 @@ where lower(u.email) = 'admin@ppa.local';
 -- Then login to the website with:
 --
 -- Username: admin
--- Password: THE PASSWORD YOU CREATED IN SUPABASE
+-- Password: admin
 --
 -- ============================================================
