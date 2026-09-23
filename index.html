@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Personal Project Archive</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOGIN
+         ===================================================== -->
+
+    <section id="loginPage">
+
+        <div class="login-wrapper">
+
+            <div class="login-panel">
+
+                <div class="login-header">
+                    PERSONAL PROJECT ARCHIVE
+                </div>
+
+                <div class="login-subtitle">
+                    PRIVATE SYSTEM
+                </div>
+
+                <div class="login-body">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        id="username"
+                        type="text"
+                        autocomplete="username"
+                        placeholder="Username"
+                    >
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        autocomplete="current-password"
+                        placeholder="Password"
+                    >
+
+                    <button
+                        class="btn primary full"
+                        onclick="login()"
+                    >
+                        LOGIN
+                    </button>
+
+                    <div
+                        id="loginError"
+                        class="login-error"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         APPLICATION
+         ===================================================== -->
+
+    <div
+        id="app"
+        class="hidden"
+    >
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <header class="topbar">
+
+            <div class="brand">
+                P.M.O ARCHIVE
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             NAVIGATION
+             ================================================= -->
+
+        <nav class="nav">
+
+            <button
+                class="nav-btn"
+                onclick="page('home')"
+            >
+                HOME
+            </button>
+
+            <button
+                class="nav-btn"
+                onclick="page('projects')"
+            >
+                PROJECTS
+            </button>
+
+            <button
+                class="nav-btn"
+                onclick="page('about')"
+            >
+                ABOUT
+            </button>
+
+            <button
+                class="nav-btn"
+                onclick="page('account')"
+            >
+                MY ACCOUNT
+            </button>
+
+            <button
+                id="adminNav"
+                class="nav-btn hidden"
+                onclick="page('admin')"
+            >
+                ADMIN
+            </button>
+
+            <button
+                class="nav-btn logout-btn"
+                onclick="logout()"
+            >
+                LOGOUT
+            </button>
+
+        </nav>
+
+
+        <!-- =================================================
+             MAIN
+             ================================================= -->
+
+        <main class="main">
+
+
+            <!-- =================================================
+                 HOME
+                 ================================================= -->
+
+            <section
+                id="homePage"
+                class="page-section"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        WELCOME
+                    </div>
+
+                    <div class="panel-body">
+
+                        <h1 id="homeWelcome">
+                            Welcome.
+                        </h1>
+
+                        <p class="muted">
+                            This is a private archive for projects,
+                            files and documentation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        LATEST PROJECTS
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div
+                            id="homeProjects"
+                            class="grid"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROJECTS
+                 ================================================= -->
+
+            <section
+                id="projectsPage"
+                class="page-section hidden"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        PROJECT ARCHIVE
+                    </div>
+
+                    <div class="panel-body">
+
+                        <input
+                            id="search"
+                            class="search"
+                            type="text"
+                            placeholder="Search projects..."
+                            oninput="renderProjects()"
+                        >
+
+                        <div
+                            id="projectsGrid"
+                            class="grid"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROJECT DETAILS
+                 ================================================= -->
+
+            <section
+                id="projectPage"
+                class="page-section hidden"
+            >
+
+                <div class="panel">
+
+                    <div
+                        id="projectTitle"
+                        class="panel-head"
+                    >
+                        PROJECT
+                    </div>
+
+                    <div class="panel-body">
+
+                        <button
+                            class="btn"
+                            onclick="page('projects')"
+                        >
+                            &lt; BACK
+                        </button>
+
+                        <div
+                            id="projectView"
+                            class="project-view"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ABOUT
+                 ================================================= -->
+
+            <section
+                id="aboutPage"
+                class="page-section hidden"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        ABOUT
+                    </div>
+
+                    <div class="panel-body">
+
+                        <h2>
+                            Personal Project Archive
+                        </h2>
+
+                        <p class="muted">
+                            A private archive for projects,
+                            files and documentation.
+                        </p>
+
+                        <p class="muted">
+                            Projects and files are stored securely
+                            using Supabase.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ACCOUNT
+                 ================================================= -->
+
+            <section
+                id="accountPage"
+                class="page-section hidden"
+            >
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        MY ACCOUNT
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div
+                            id="accountInfo"
+                            class="account-info"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ADMIN
+                 ================================================= -->
+
+            <section
+                id="adminPage"
+                class="page-section hidden"
+            >
+
+                <!-- ADMIN HEADER -->
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        ADMIN PANEL
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div
+                            id="adminMsg"
+                            class="admin-message"
+                        ></div>
+
+                        <div class="stats">
+
+                            <div class="stat">
+                                <span>PROJECTS</span>
+                                <strong id="statProjects">
+                                    0
+                                </strong>
+                            </div>
+
+                            <div class="stat">
+                                <span>USERS</span>
+                                <strong id="statUsers">
+                                    0
+                                </strong>
+                            </div>
+
+                            <div class="stat">
+                                <span>FILES</span>
+                                <strong id="statFiles">
+                                    0
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CREATE PROJECT -->
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        CREATE PROJECT
+                    </div>
+
+                    <div class="panel-body">
+
+                        <label for="projectName">
+                            Project Name
+                        </label>
+
+                        <input
+                            id="projectName"
+                            type="text"
+                            placeholder="Project name"
+                        >
+
+
+                        <label for="projectDescription">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="projectDescription"
+                            placeholder="Project description"
+                        ></textarea>
+
+
+                        <label for="projectCover">
+                            Cover Image
+                        </label>
+
+                        <input
+                            id="projectCover"
+                            type="file"
+                            accept="image/*"
+                        >
+
+
+                        <label for="projectFiles">
+                            Project Files
+                        </label>
+
+                        <input
+                            id="projectFiles"
+                            type="file"
+                            multiple
+                        >
+
+                        <div class="small-note">
+                            Maximum file size:
+                            25 MB per file.
+                        </div>
+
+
+                        <button
+                            class="btn primary"
+                            onclick="createProject()"
+                        >
+                            CREATE PROJECT
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECT MANAGEMENT -->
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        PROJECT MANAGEMENT
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div
+                            id="adminProjects"
+                            class="admin-list"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- USER MANAGEMENT -->
+
+                <div class="panel">
+
+                    <div class="panel-head">
+                        USER MANAGEMENT
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div
+                            id="adminUsers"
+                            class="admin-list"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="footer">
+
+            PERSONAL PROJECT ARCHIVE
+
+            <span>
+                //
+            </span>
+
+            PRIVATE SYSTEM
+
+        </footer>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script
+        type="module"
+        src="app.js"
+    ></script>
+
+</body>
+
+</html>
