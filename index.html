@@ -1,0 +1,2821 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Personal Project Archive</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: #0d0d0d;
+    color: #c8c8c8;
+    font-family: "Courier New", monospace;
+    direction: ltr;
+    text-align: left;
+}
+
+body {
+    font-size: 14px;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: "Courier New", monospace;
+}
+
+button {
+    background: #202020;
+    color: #c8c8c8;
+    border: 1px solid #4a4a4a;
+    padding: 9px 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2b2b2b;
+    border-color: #777;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    background: #161616;
+    color: #c8c8c8;
+    border: 1px solid #404040;
+    padding: 10px;
+    outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #777;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+h1,
+h2,
+h3 {
+    color: #d0d0d0;
+    font-weight: normal;
+}
+
+a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ddd;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #090909;
+}
+
+.login-box {
+    width: 390px;
+    max-width: 92%;
+    background: #151515;
+    border: 1px solid #505050;
+    padding: 28px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+.login-box h1 {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 21px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #888;
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* =========================
+   APP
+========================= */
+
+#app {
+    display: none;
+    min-height: 100vh;
+}
+
+header {
+    background: #141414;
+    border-bottom: 1px solid #3f3f3f;
+    padding: 15px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.logo {
+    color: #ddd;
+    font-size: 18px;
+}
+
+.user-info {
+    color: #777;
+    font-size: 12px;
+}
+
+nav {
+    background: #181818;
+    border-bottom: 1px solid #303030;
+    padding: 8px 15px;
+
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+nav button {
+    background: #202020;
+    border: 1px solid #3d3d3d;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px 18px 50px;
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.panel {
+    background: #171717;
+    border: 1px solid #393939;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.panel-title {
+    color: #aaa;
+    border-bottom: 1px solid #303030;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(260px, 1fr));
+    gap: 15px;
+}
+
+.project-card {
+    background: #181818;
+    border: 1px solid #3d3d3d;
+    overflow: hidden;
+}
+
+.project-cover {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background: #0f0f0f;
+    display: block;
+}
+
+.project-cover-placeholder {
+    height: 150px;
+    background: #101010;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #555;
+}
+
+.project-content {
+    padding: 15px;
+}
+
+.project-content h3 {
+    margin-top: 0;
+}
+
+.project-id {
+    font-size: 11px;
+    color: #666;
+
+    direction: ltr;
+    text-align: left;
+}
+
+.project-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #383838;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #202020;
+    color: #aaa;
+}
+
+td {
+    background: #171717;
+}
+
+/* =========================
+   ADMIN
+========================= */
+
+.admin-lock {
+    border: 1px solid #4d4d4d;
+    background: #151515;
+    padding: 30px;
+    text-align: center;
+}
+
+.admin-lock h2 {
+    color: #aaa;
+}
+
+.admin-section {
+    margin-bottom: 25px;
+}
+
+.admin-section h3 {
+    border-bottom: 1px solid #303030;
+    padding-bottom: 8px;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: 500px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+
+    background: #171717;
+    border: 1px solid #555;
+
+    padding: 22px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+/* =========================
+   SUCCESS / ERROR
+========================= */
+
+.message {
+    padding: 11px 14px;
+    margin-bottom: 15px;
+
+    border: 1px solid #444;
+    background: #191919;
+    color: #aaa;
+}
+
+.message.success {
+    border-color: #4f704f;
+    color: #a9d3a9;
+}
+
+.message.error {
+    border-color: #704f4f;
+    color: #d3a9a9;
+}
+
+/* UPLOAD SUCCESS */
+
+.upload-success {
+    position: fixed;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 5000;
+
+    min-width: 300px;
+    max-width: 90%;
+
+    background: #151a15;
+    border: 1px solid #4f704f;
+
+    color: #b7d9b7;
+
+    padding: 13px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+
+    animation: successAppear 0.25s ease-out;
+}
+
+.upload-success-icon {
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: #3f633f;
+    color: #d8f0d8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+@keyframes successAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* =========================
+   FILES
+========================= */
+
+.file-item {
+    border: 1px solid #353535;
+    background: #151515;
+
+    padding: 10px;
+    margin-bottom: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.file-id {
+    color: #666;
+    font-size: 11px;
+
+    direction: ltr;
+    text-align: left;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        overflow-x: auto;
+    }
+
+    main {
+        padding: 15px 10px;
+    }
+
+    .login-box {
+        padding: 20px;
+    }
+
+    .upload-success {
+        min-width: 0;
+        width: 90%;
+    }
+}
+
+/* =========================
+   CHAT + PROFILE
+========================= */
+.muted { color:#777; }
+.profile-divider { border:0; border-top:1px solid #303030; margin:24px 0; }
+.chat-messages {
+    max-height: 520px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+.chat-item {
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    padding:10px;
+    background:#121212;
+    border:1px solid #303030;
+}
+.chat-avatar {
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#222;
+    border:1px solid #444;
+    flex:0 0 42px;
+}
+.chat-body { min-width:0; }
+.chat-meta { color:#888; font-size:11px; margin-bottom:5px; }
+.chat-text { color:#ddd; white-space:pre-wrap; overflow-wrap:anywhere; }
+.chat-compose { display:flex; gap:8px; align-items:flex-end; }
+.chat-compose textarea { min-height:60px; }
+.chat-compose button { white-space:nowrap; }
+.ai-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+.ai-response-box {
+    min-height:130px;
+    padding:12px;
+    background:#0d0d0d;
+    border:1px solid #333;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+}
+.ai-key-note { color:#777; font-size:12px; }
+@media (max-width:650px) {
+    .chat-compose { flex-direction:column; align-items:stretch; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<section id="loginPage">
+
+    <div class="login-box">
+
+        <h1>PERSONAL PROJECT ARCHIVE</h1>
+
+        <div id="loginMessage"></div>
+
+        <div class="form-group">
+
+            <label>Username</label>
+
+            <input
+                id="loginUsername"
+                type="text"
+                autocomplete="username"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Password</label>
+
+            <input
+                id="loginPassword"
+                type="password"
+                autocomplete="current-password"
+            >
+
+        </div>
+
+        <button
+            class="login-btn"
+            id="loginBtn"
+            onclick="login()"
+            disabled
+        >
+            LOADING...
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     APPLICATION
+========================= -->
+
+<div id="app">
+
+    <header>
+
+        <div class="logo">
+            PROJECT ARCHIVE
+        </div>
+
+        <div
+            class="user-info"
+            id="headerUser"
+        ></div>
+
+    </header>
+
+
+    <nav>
+
+        <button onclick="showPage('home')">
+            HOME
+        </button>
+
+        <button onclick="showPage('projects')">
+            PROJECTS
+        </button>
+
+        <button onclick="showPage('about')">
+            ABOUT
+        </button>
+
+        <button onclick="showPage('chat')">
+            CHAT
+        </button>
+
+        <button onclick="showPage('dashboard')">
+            MY ACCOUNT
+        </button>
+
+        <!-- Admin button appears only for administrators -->
+        <span id="adminNav"></span>
+
+        <button onclick="logout()">
+            LOGOUT
+        </button>
+
+    </nav>
+
+
+    <main>
+
+        <!-- HOME -->
+
+        <section
+            id="page-home"
+            class="page active"
+        >
+
+            <div class="panel">
+
+                <h2 class="panel-title">
+                    WELCOME
+                </h2>
+
+                <p>
+                    Personal Project Archive
+                </p>
+
+                <p>
+                    Simple old-school project management system.
+                </p>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2 class="panel-title">
+                    RECENT PROJECTS
+                </h2>
+
+                <div
+                    id="homeProjects"
+                    class="projects-grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+
+        <section
+            id="page-projects"
+            class="page"
+        >
+
+            <div class="panel">
+
+                <h2 class="panel-title">
+                    PROJECTS
+                </h2>
+
+                <input
+                    id="projectSearch"
+                    placeholder="Search projects..."
+                    oninput="renderProjects()"
+                >
+
+            </div>
+
+            <div
+                id="projectsList"
+                class="projects-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- PROJECT DETAIL -->
+
+        <section
+            id="page-project"
+            class="page"
+        >
+
+            <div id="projectDetail"></div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section
+            id="page-about"
+            class="page"
+        >
+
+            <div class="panel">
+
+                <h2 class="panel-title">
+                    ABOUT
+                </h2>
+
+                <p>
+                    Personal Project Archive
+                </p>
+
+                <p>
+                    A simple private archive for storing
+                    and managing projects.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCOUNT -->
+
+        <section
+            id="page-dashboard"
+            class="page"
+        >
+
+            <div class="panel">
+
+                <h2 class="panel-title">
+                    MY ACCOUNT
+                </h2>
+
+                <div id="accountInfo"></div>
+
+                <hr class="profile-divider">
+
+                <h3>PROFILE</h3>
+                <div class="form-group">
+                    <label>Nickname</label>
+                    <input id="profileNickname" maxlength="60">
+                </div>
+                <div class="form-group">
+                    <label>Profile image URL</label>
+                    <input id="profileAvatar" type="url" maxlength="500" placeholder="https://...">
+                </div>
+                <button onclick="saveProfile()">SAVE PROFILE</button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CHAT -->
+        <section id="page-chat" class="page">
+            <div class="panel">
+                <h2 class="panel-title">PUBLIC CHAT</h2>
+                <p class="muted">All authenticated accounts can chat. Your nickname and profile photo are taken from MY ACCOUNT.</p>
+                <div id="chatMessages" class="chat-messages">
+                    <div class="panel">Loading chat...</div>
+                </div>
+                <div class="chat-compose">
+                    <textarea id="chatInput" rows="2" maxlength="2000" placeholder="Write a message..."></textarea>
+                    <button onclick="sendChatMessage()">SEND</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN -->
+
+        <section
+            id="page-admin"
+            class="page"
+        >
+
+            <div id="adminContent"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     EDIT USER MODAL
+========================= -->
+
+<div
+    id="editUserModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <h2 class="panel-title">
+            EDIT USER
+        </h2>
+
+        <input
+            type="hidden"
+            id="editUserId"
+        >
+
+        <div class="form-group">
+
+            <label>Username</label>
+
+            <input id="editUsername">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Password</label>
+
+            <input
+                id="editPassword"
+                type="password"
+                placeholder="Leave blank to keep current password"
+                autocomplete="new-password"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Role</label>
+
+            <select id="editRole">
+
+                <option value="user">
+                    user
+                </option>
+
+                <option value="admin">
+                    admin
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button onclick="saveUserEdit()">
+                SAVE
+            </button>
+
+            <button onclick="closeEditUser()">
+                CANCEL
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   DATABASE
+========================================================= */
+
+const API_URL = "api.php";
+
+let db = null;
+
+let currentUser = null;
+
+
+/* =========================================================
+   DEFAULT DATABASE
+========================================================= */
+
+function defaultDB() {
+
+    return {
+
+        users: [
+
+            {
+                id: "1000000001",
+                username: "admin",
+                password: "admin123",
+                role: "admin"
+            },
+
+            {
+                id: "1000000002",
+                username: "test",
+                password: "123456",
+                role: "user"
+            }
+
+        ],
+
+        projects: []
+
+    };
+}
+
+
+/* =========================================================
+   LOAD DATABASE
+========================================================= */
+
+async async function loadDB() {
+    try {
+        const response = await fetch(API_URL, {
+            credentials: "same-origin",
+            cache: "no-store"
+        });
+        if (!response.ok) throw new Error("Server returned " + response.status);
+        const result = await response.json();
+
+        if (!result.authenticated) {
+            return null;
+        }
+
+        currentUser = result.currentUser;
+        return {
+            users: result.users || [],
+            projects: result.projects || [],
+            chat: result.chat || []
+        };
+    } catch (error) {
+        console.error(error);
+        document.getElementById("loginMessage").innerHTML = `
+            <div class="message error">
+                Could not reach the server.
+            </div>`;
+        return null;
+    }
+}
+
+
+/* =========================================================
+   SAVE DATABASE
+========================================================= */
+
+async function saveDB() {
+    if (!isAdmin()) return false;
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                action: "save_data",
+                data: { projects: db.projects }
+            })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Save failed");
+        return true;
+    } catch (error) {
+        console.error(error);
+        showMessage(error.message || "Could not save to server.", "error");
+        return false;
+    }
+}
+
+
+/* =========================================================
+   USER ID
+========================================================= */
+
+function random10DigitID() {
+
+    let id;
+
+    do {
+
+        id = String(
+            Math.floor(
+                1000000000 +
+                Math.random() * 9000000000
+            )
+        );
+
+    } while (
+        db.users.some(
+            user => user.id === id
+        )
+    );
+
+    return id;
+}
+
+
+/* =========================================================
+   PROJECT ID
+========================================================= */
+
+function randomProjectID() {
+
+    const chars =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    let id;
+
+    do {
+
+        let code = "";
+
+        for (let i = 0; i < 8; i++) {
+
+            code +=
+                chars[
+                    Math.floor(
+                        Math.random() * chars.length
+                    )
+                ];
+        }
+
+        id = "PRJ-" + code;
+
+    } while (
+        db.projects.some(
+            project => project.id === id
+        )
+    );
+
+    return id;
+}
+
+
+/* =========================================================
+   FILE ID
+========================================================= */
+
+function randomFileID() {
+
+    return (
+        "FILE-" +
+        Date.now() +
+        "-" +
+        Math.random()
+            .toString(36)
+            .slice(2, 7)
+            .toUpperCase()
+    );
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+async function login() {
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({action:"login", username, password})
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Invalid username or password.");
+
+        currentUser = result.currentUser;
+        db = await loadDB();
+        if (!db) throw new Error("Could not load account data.");
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("app").style.display = "block";
+        updateHeader();
+        buildNavigation();
+        showPage("home");
+    } catch (error) {
+        document.getElementById("loginMessage").innerHTML =
+            `<div class="message error">${escapeHTML(error.message)}</div>`;
+    }
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout() {
+    try {
+        await fetch(API_URL, {
+            method:"POST",
+            credentials:"same-origin",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({action:"logout"})
+        });
+    } catch(e) {}
+    currentUser = null;
+    db = null;
+    document.getElementById("app").style.display = "none";
+    document.getElementById("loginPage").style.display = "flex";
+    document.getElementById("loginUsername").value = "";
+    document.getElementById("loginPassword").value = "";
+    document.getElementById("loginMessage").innerHTML = "";
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+function updateHeader() {
+
+    if (!currentUser) {
+        return;
+    }
+
+    document
+        .getElementById("headerUser")
+        .textContent =
+            currentUser.username +
+            " | ID: " +
+            currentUser.id;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function buildNavigation() {
+
+    const adminNav =
+        document.getElementById("adminNav");
+
+    if (!adminNav) {
+        return;
+    }
+
+    adminNav.innerHTML = "";
+
+    /*
+     * Admin button is created only
+     * for an authenticated administrator.
+     */
+
+    if (
+        currentUser &&
+        currentUser.role === "admin"
+    ) {
+
+        const button =
+            document.createElement("button");
+
+        button.textContent = "ADMIN";
+
+        button.onclick = function () {
+
+            showPage("admin");
+
+        };
+
+        adminNav.appendChild(button);
+    }
+}
+
+
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+function showPage(page) {
+
+    /*
+     * No authenticated user = no application access.
+     */
+
+    if (!currentUser) {
+
+        document
+            .getElementById("app")
+            .style.display = "none";
+
+        document
+            .getElementById("loginPage")
+            .style.display = "flex";
+
+        return;
+    }
+
+
+    /*
+     * ADMIN SECURITY
+     */
+
+    if (page === "admin") {
+
+        if (
+            currentUser.role !== "admin"
+        ) {
+
+            showMessage(
+                "Access denied. Administrator privileges required.",
+                "error"
+            );
+
+            page = "home";
+        }
+    }
+
+
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            element =>
+                element.classList.remove("active")
+        );
+
+
+    const target =
+        document.getElementById(
+            "page-" + page
+        );
+
+
+    if (target) {
+
+        target.classList.add("active");
+    }
+
+
+    if (page === "home") {
+
+        renderHome();
+    }
+
+
+    if (page === "projects") {
+
+        renderProjects();
+    }
+
+
+    if (page === "dashboard") {
+
+        renderDashboard();
+    }
+
+
+    if (page === "admin") {
+
+        renderAdmin();
+    }
+
+    if (page === "chat") {
+
+        refreshChat();
+    }
+}
+
+
+/* =========================================================
+   NORMAL MESSAGE
+========================================================= */
+
+function showMessage(
+    text,
+    type = "success"
+) {
+
+    const old =
+        document.querySelector(
+            ".global-message"
+        );
+
+    if (old) {
+        old.remove();
+    }
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message " +
+        type +
+        " global-message";
+
+    message.textContent = text;
+
+    document
+        .querySelector("main")
+        .prepend(message);
+
+    setTimeout(
+        () => message.remove(),
+        3500
+    );
+}
+
+
+/* =========================================================
+   UPLOAD SUCCESS MESSAGE
+========================================================= */
+
+function showUploadSuccess() {
+
+    const old =
+        document.querySelector(
+            ".upload-success"
+        );
+
+    if (old) {
+        old.remove();
+    }
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "upload-success";
+
+    message.innerHTML = `
+
+        <span class="upload-success-icon">
+            ✓
+        </span>
+
+        <span>
+            Upload completed successfully
+        </span>
+
+    `;
+
+    document.body.appendChild(message);
+
+    setTimeout(
+        () => {
+
+            message.style.opacity = "0";
+
+            setTimeout(
+                () => message.remove(),
+                250
+            );
+
+        },
+        3000
+    );
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function renderHome() {
+
+    const box =
+        document.getElementById(
+            "homeProjects"
+        );
+
+    if (!db.projects.length) {
+
+        box.innerHTML = `
+            <div class="panel">
+                No projects yet.
+            </div>
+        `;
+
+        return;
+    }
+
+    box.innerHTML =
+        db.projects
+            .slice()
+            .reverse()
+            .slice(0, 6)
+            .map(projectCard)
+            .join("");
+}
+
+
+/* =========================================================
+   PROJECT LIST
+========================================================= */
+
+function renderProjects() {
+
+    const box =
+        document.getElementById(
+            "projectsList"
+        );
+
+    const search =
+        (
+            document.getElementById(
+                "projectSearch"
+            )?.value || ""
+        ).toLowerCase();
+
+
+    const projects =
+        db.projects.filter(
+            project =>
+
+                project.title
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                project.description
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                project.id
+                    .toLowerCase()
+                    .includes(search)
+        );
+
+
+    if (!projects.length) {
+
+        box.innerHTML = `
+            <div class="panel">
+                No projects found.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    box.innerHTML =
+        projects
+            .map(projectCard)
+            .join("");
+}
+
+
+/* =========================================================
+   PROJECT CARD
+========================================================= */
+
+function projectCard(project) {
+
+    const cover =
+        project.cover
+
+            ?
+
+        `
+        <img
+            class="project-cover"
+            src="${project.cover}"
+            alt="Project cover"
+        >
+        `
+
+            :
+
+        `
+        <div class="project-cover-placeholder">
+            NO IMAGE
+        </div>
+        `;
+
+
+    return `
+
+        <div class="project-card">
+
+            ${cover}
+
+            <div class="project-content">
+
+                <h3>
+                    ${escapeHTML(project.title)}
+                </h3>
+
+                <p>
+                    ${
+                        escapeHTML(
+                            project.description ||
+                            "No description."
+                        )
+                    }
+                </p>
+
+                <div class="project-id">
+                    ${project.id}
+                </div>
+
+                <div class="project-actions">
+
+                    <button
+                        onclick="openProject('${project.id}')"
+                    >
+                        OPEN
+                    </button>
+
+                    ${
+                        currentUser &&
+                        currentUser.role === "admin"
+
+                        ?
+
+                        `
+                        <button
+                            onclick="deleteProject('${project.id}')"
+                        >
+                            DELETE
+                        </button>
+                        `
+
+                        :
+
+                        ""
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* =========================================================
+   OPEN PROJECT
+========================================================= */
+
+function openProject(id) {
+
+    const project =
+        db.projects.find(
+            project => project.id === id
+        );
+
+    if (!project) {
+        return;
+    }
+
+
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            page =>
+                page.classList.remove("active")
+        );
+
+
+    document
+        .getElementById("page-project")
+        .classList.add("active");
+
+
+    const files =
+        project.files || [];
+
+
+    document
+        .getElementById("projectDetail")
+        .innerHTML = `
+
+        <div class="panel">
+
+            <button
+                onclick="showPage('projects')"
+            >
+                ← BACK
+            </button>
+
+            <h1>
+                ${escapeHTML(project.title)}
+            </h1>
+
+            <div class="project-id">
+                ${project.id}
+            </div>
+
+
+            ${
+                project.cover
+
+                ?
+
+                `
+                <img
+                    src="${project.cover}"
+                    alt="Project cover"
+                    style="
+                        width:100%;
+                        max-height:450px;
+                        object-fit:contain;
+                        background:#101010;
+                        margin-top:20px;
+                    "
+                >
+                `
+
+                :
+
+                ""
+            }
+
+
+            <h3>
+                DESCRIPTION
+            </h3>
+
+            <p>
+                ${escapeHTML(
+                    project.description || ""
+                )}
+            </p>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2 class="panel-title">
+                FILES
+            </h2>
+
+
+            ${
+                files.length
+
+                ?
+
+                files
+                    .map(
+                        file => `
+
+                        <div class="file-item">
+
+                            <div>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        file.name
+                                    )}
+                                </strong>
+
+                                <div class="file-id">
+                                    ${file.id}
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="${file.data}"
+                                download="${escapeHTML(
+                                    file.name
+                                )}"
+                            >
+                                DOWNLOAD
+                            </a>
+
+                        </div>
+
+                        `
+                    )
+                    .join("")
+
+                :
+
+                "<p>No files.</p>"
+            }
+
+        </div>
+    `;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function renderDashboard() {
+    if (!currentUser) return;
+
+    document.getElementById("accountInfo").innerHTML = `
+        <p><strong>Username:</strong> ${escapeHTML(currentUser.username)}</p>
+        <p><strong>User ID:</strong> ${escapeHTML(currentUser.id)}</p>
+        <p><strong>Role:</strong> ${escapeHTML(currentUser.role)}</p>
+    `;
+    document.getElementById("profileNickname").value = currentUser.nickname || currentUser.username;
+    document.getElementById("profileAvatar").value = currentUser.avatar || "";
+}
+
+
+/* =========================================================
+   ADMIN PANEL
+========================================================= */
+
+function renderAdmin() {
+
+    /*
+     * Second security layer.
+     */
+
+    if (
+        !currentUser ||
+        currentUser.role !== "admin"
+    ) {
+
+        document
+            .getElementById("adminContent")
+            .innerHTML = `
+
+            <div class="admin-lock">
+
+                <h2>
+                    ACCESS DENIED
+                </h2>
+
+                <p>
+                    Administrator privileges are required.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    document
+        .getElementById("adminContent")
+        .innerHTML = `
+
+        <div class="panel">
+
+            <h1 class="panel-title">
+                ADMIN CONTROL PANEL
+            </h1>
+
+            <p>
+                Administrator:
+                ${escapeHTML(
+                    currentUser.username
+                )}
+            </p>
+
+        </div>
+
+
+        <div class="panel admin-section">
+
+            <h3>
+                CREATE USER
+            </h3>
+
+            <div class="admin-grid">
+
+                <input
+                    id="newUsername"
+                    placeholder="Username"
+                >
+
+                <input
+                    id="newPassword"
+                    placeholder="Password"
+                >
+
+                <select id="newRole">
+
+                    <option value="user">
+                        user
+                    </option>
+
+                    <option value="admin">
+                        admin
+                    </option>
+
+                </select>
+
+                <button
+                    onclick="createUser()"
+                >
+                    CREATE USER
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel admin-section">
+
+            <h3>
+                USERS
+            </h3>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Username
+                            </th>
+
+                            <th>
+                                Role
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        ${
+                            db.users
+                                .map(
+                                    user => `
+
+                                    <tr>
+
+                                        <td>
+                                            ${user.id}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHTML(
+                                                user.username
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${user.role}
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                onclick="editUser('${user.id}')"
+                                            >
+                                                EDIT
+                                            </button>
+
+
+                                            ${
+                                                user.id !==
+                                                "1000000001"
+
+                                                ?
+
+                                                `
+                                                <button
+                                                    onclick="deleteUser('${user.id}')"
+                                                >
+                                                    DELETE
+                                                </button>
+                                                `
+
+                                                :
+
+                                                ""
+                                            }
+
+                                        </td>
+
+                                    </tr>
+
+                                    `
+                                )
+                                .join("")
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel admin-section">
+
+            <h3>
+                CREATE PROJECT
+            </h3>
+
+
+            <div class="form-group">
+
+                <label>
+                    Project title
+                </label>
+
+                <input
+                    id="newProjectTitle"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Description
+                </label>
+
+                <textarea
+                    id="newProjectDescription"
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Cover image
+                </label>
+
+                <input
+                    id="newProjectCover"
+                    type="file"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Project files
+                </label>
+
+                <input
+                    id="newProjectFiles"
+                    type="file"
+                    multiple
+                >
+
+            </div>
+
+
+            <button
+                onclick="createProject()"
+            >
+                UPLOAD PROJECT
+            </button>
+
+        </div>
+
+
+        <div class="panel admin-section">
+
+            <h3>
+                PROJECT MANAGEMENT
+            </h3>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Project
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        ${
+                            db.projects.length
+
+                            ?
+
+                            db.projects
+                                .map(
+                                    project => `
+
+                                    <tr>
+
+                                        <td>
+                                            ${project.id}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHTML(
+                                                project.title
+                                            )}
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                onclick="openProject('${project.id}')"
+                                            >
+                                                OPEN
+                                            </button>
+
+
+                                            <button
+                                                onclick="deleteProject('${project.id}')"
+                                            >
+                                                DELETE
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+                                    `
+                                )
+                                .join("")
+
+                            :
+
+                            `
+                            <tr>
+
+                                <td colspan="3">
+                                    No projects.
+                                </td>
+
+                            </tr>
+                            `
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="panel admin-section">
+            <h3>PRIVATE AI</h3>
+            <p class="ai-key-note">
+                Supported major providers: OpenAI, Google Gemini, Anthropic Claude, DeepSeek,
+                Groq, Mistral AI, xAI/Grok and Cohere. The API key stays on the server and is
+                never returned to normal users or exposed to page JavaScript after saving.
+            </p>
+
+            <div class="admin-grid">
+                <div>
+                    <label>AI Provider</label>
+                    <select id="aiProvider" onchange="loadProviderModels()"></select>
+                </div>
+                <div>
+                    <label>Model</label>
+                    <select id="aiModel"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>API Key</label>
+                <div class="admin-grid">
+                    <input id="apiKeyInput" type="password" autocomplete="new-password" placeholder="Enter this provider's API key">
+                    <button onclick="saveAIConfig()">SAVE AI CONFIG</button>
+                </div>
+            </div>
+
+            <div class="ai-grid">
+                <div>
+                    <label>AI chat / script</label>
+                    <textarea id="aiScript" rows="7" maxlength="12000" placeholder="Write a prompt or script for the private AI..."></textarea>
+                </div>
+                <button onclick="runAI()">SEND TO AI</button>
+                <div id="aiResponse" class="ai-response-box">No response yet.</div>
+            </div>
+        </div>
+    `;
+}
+
+
+/* =========================================================
+   CREATE USER
+========================================================= */
+
+async function createUser() {
+    if (!isAdmin()) return;
+
+    const username = document.getElementById("newUsername").value.trim();
+    const password = document.getElementById("newPassword").value;
+    const role = document.getElementById("newRole").value;
+
+    if (!username || password.length < 6) {
+        showMessage("Username and password (minimum 6 characters) are required.", "error");
+        return;
+    }
+
+    const response = await fetch(API_URL, {
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:"create_user", username, password, role})
+    });
+    const result = await response.json();
+    if (!response.ok) {
+        showMessage(result.error || "Could not create user.", "error");
+        return;
+    }
+    db = await loadDB();
+    showMessage("User created successfully!");
+    renderAdmin();
+}
+
+
+/* =========================================================
+   EDIT USER
+========================================================= */
+
+function editUser(id) {
+    if (!isAdmin()) return;
+    const user = db.users.find(user => user.id === id);
+    if (!user) return;
+
+    document.getElementById("editUserId").value = user.id;
+    document.getElementById("editUsername").value = user.username;
+    document.getElementById("editPassword").value = "";
+    document.getElementById("editRole").value = user.role;
+    document.getElementById("editUserModal").classList.add("active");
+}
+
+
+/* =========================================================
+   CLOSE EDIT USER
+========================================================= */
+
+function closeEditUser() {
+
+    document
+        .getElementById("editUserModal")
+        .classList.remove("active");
+}
+
+
+/* =========================================================
+   SAVE USER EDIT
+========================================================= */
+
+async function saveUserEdit() {
+    if (!isAdmin()) return;
+
+    const id = document.getElementById("editUserId").value;
+    const username = document.getElementById("editUsername").value.trim();
+    const password = document.getElementById("editPassword").value;
+    const role = document.getElementById("editRole").value;
+
+    if (!username) {
+        showMessage("Username is required.", "error");
+        return;
+    }
+
+    const response = await fetch(API_URL, {
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:"update_user", id, username, password, role})
+    });
+    const result = await response.json();
+    if (!response.ok) {
+        showMessage(result.error || "Could not update user.", "error");
+        return;
+    }
+
+    db = await loadDB();
+    const fresh = db.users.find(u => u.id === id);
+    if (currentUser.id === id && fresh) {
+        currentUser = {...currentUser, ...fresh};
+        updateHeader();
+        buildNavigation();
+    }
+    closeEditUser();
+    showMessage("User updated successfully!");
+    renderAdmin();
+}
+
+
+/* =========================================================
+   DELETE USER
+========================================================= */
+
+async function deleteUser(id) {
+    if (!isAdmin()) return;
+    if (id === "1000000001") {
+        showMessage("Main administrator cannot be deleted.", "error");
+        return;
+    }
+
+    const user = db.users.find(user => user.id === id);
+    if (!user) return;
+    if (!confirm('Delete user "' + user.username + '"?')) return;
+
+    const response = await fetch(API_URL, {
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:"delete_user", id})
+    });
+    const result = await response.json();
+    if (!response.ok) {
+        showMessage(result.error || "Could not delete user.", "error");
+        return;
+    }
+
+    db = await loadDB();
+    showMessage("User deleted successfully!");
+    renderAdmin();
+}
+
+
+/* =========================================================
+   CREATE PROJECT
+========================================================= */
+
+async function createProject() {
+
+    if (!isAdmin()) {
+        return;
+    }
+
+
+    const title =
+        document
+            .getElementById(
+                "newProjectTitle"
+            )
+            .value
+            .trim();
+
+
+    const description =
+        document
+            .getElementById(
+                "newProjectDescription"
+            )
+            .value
+            .trim();
+
+
+    const coverInput =
+        document.getElementById(
+            "newProjectCover"
+        );
+
+
+    const filesInput =
+        document.getElementById(
+            "newProjectFiles"
+        );
+
+
+    if (!title) {
+
+        showMessage(
+            "Project title is required.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    let cover = "";
+
+
+    if (
+        coverInput.files.length
+    ) {
+
+        cover =
+            await fileToDataURL(
+                coverInput.files[0]
+            );
+    }
+
+
+    const files = [];
+
+
+    for (
+        const file of filesInput.files
+    ) {
+
+        files.push({
+
+            id: randomFileID(),
+
+            name: file.name,
+
+            data:
+                await fileToDataURL(file)
+
+        });
+    }
+
+
+    const project = {
+
+        id: randomProjectID(),
+
+        title: title,
+
+        description: description,
+
+        cover: cover,
+
+        files: files,
+
+        createdBy:
+            currentUser.id,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    db.projects.push(project);
+
+    saveDB();
+
+
+    /*
+     * Clear upload fields.
+     */
+
+    document
+        .getElementById(
+            "newProjectTitle"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "newProjectDescription"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "newProjectCover"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "newProjectFiles"
+        )
+        .value = "";
+
+
+    /*
+     * Green check notification.
+     */
+
+    showUploadSuccess();
+
+
+    renderAdmin();
+}
+
+
+/* =========================================================
+   DELETE PROJECT
+========================================================= */
+
+function deleteProject(id) {
+
+    if (!isAdmin()) {
+        return;
+    }
+
+
+    const project =
+        db.projects.find(
+            project => project.id === id
+        );
+
+
+    if (!project) {
+        return;
+    }
+
+
+    if (
+        !confirm(
+            'Delete project "' +
+            project.title +
+            '"?'
+        )
+    ) {
+        return;
+    }
+
+
+    db.projects =
+        db.projects.filter(
+            project => project.id !== id
+        );
+
+
+    saveDB();
+
+
+    showMessage(
+        "Project deleted successfully!"
+    );
+
+
+    renderAdmin();
+
+    renderProjects();
+
+    renderHome();
+}
+
+
+/* =========================================================
+   ADMIN CHECK
+========================================================= */
+
+function isAdmin() {
+
+    if (
+        !currentUser ||
+        currentUser.role !== "admin"
+    ) {
+
+        showMessage(
+            "Access denied.",
+            "error"
+        );
+
+        return false;
+    }
+
+    return true;
+}
+
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+async function saveProfile() {
+    if (!currentUser) return;
+    const nickname = document.getElementById("profileNickname").value.trim();
+    const avatar = document.getElementById("profileAvatar").value.trim();
+
+    const response = await fetch(API_URL, {
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:"update_profile", nickname, avatar})
+    });
+    const result = await response.json();
+    if (!response.ok) {
+        showMessage(result.error || "Could not save profile.", "error");
+        return;
+    }
+    currentUser = result.currentUser;
+    updateHeader();
+    showMessage("Profile saved successfully!");
+    refreshChat();
+}
+
+
+/* =========================================================
+   PUBLIC CHAT
+========================================================= */
+async function refreshChat() {
+    try {
+        const response = await fetch(API_URL, {credentials:"same-origin", cache:"no-store"});
+        const result = await response.json();
+        if (!result.authenticated) return;
+        db = {
+            users: result.users || [],
+            projects: result.projects || [],
+            chat: result.chat || []
+        };
+        currentUser = result.currentUser || currentUser;
+        renderChat();
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+function renderChat() {
+    const box = document.getElementById("chatMessages");
+    if (!box) return;
+
+    const messages = db?.chat || [];
+    if (!messages.length) {
+        box.innerHTML = `<div class="panel">No messages yet.</div>`;
+        return;
+    }
+
+    box.innerHTML = messages.map(msg => {
+        const avatar = msg.avatar
+            ? escapeHTML(msg.avatar)
+            : "";
+        const image = avatar
+            ? `<img class="chat-avatar" src="${avatar}" alt="" onerror="this.style.display='none'">`
+            : `<div class="chat-avatar"></div>`;
+        const date = msg.createdAt
+            ? new Date(msg.createdAt).toLocaleString()
+            : "";
+        return `
+            <div class="chat-item">
+                ${image}
+                <div class="chat-body">
+                    <div class="chat-meta">
+                        <strong>${escapeHTML(msg.nickname || "User")}</strong>
+                        · ${escapeHTML(date)}
+                    </div>
+                    <div class="chat-text">${escapeHTML(msg.message || "")}</div>
+                </div>
+            </div>`;
+    }).join("");
+
+    box.scrollTop = box.scrollHeight;
+}
+
+async function sendChatMessage() {
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    if (!message) return;
+
+    const response = await fetch(API_URL, {
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:"send_chat", message})
+    });
+    const result = await response.json();
+    if (!response.ok) {
+        showMessage(result.error || "Could not send message.", "error");
+        return;
+    }
+    input.value = "";
+    await refreshChat();
+}
+
+let chatTimer = null;
+function startChatPolling() {
+    if (chatTimer) clearInterval(chatTimer);
+    chatTimer = setInterval(() => {
+        if (currentUser && document.getElementById("page-chat")?.classList.contains("active")) {
+            refreshChat();
+        }
+    }, 5000);
+}
+
+
+/* =========================================================
+   PRIVATE ADMIN AI
+========================================================= */
+let aiProviderData = {};
+
+async function loadAIConfig() {
+    if (!isAdmin()) return;
+    const response = await fetch(API_URL + "?ai_config=1", {credentials:"same-origin"});
+    // GET routing in api.php is intentionally session-protected; use POST fallback below.
+    if (!response.ok) return;
+}
+
+async function refreshAIConfig() {
+    if (!isAdmin()) return;
+    const response = await fetch(API_URL, {
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:"ai_config"})
+    });
+    const result = await response.json();
+    if (!response.ok) return;
+    aiProviderData = result.providers || {};
+    const provider = document.getElementById("aiProvider");
+    const model = document.getElementById("aiModel");
+    if (!provider || !model) return;
+
+    provider.innerHTML = Object.entries(aiProviderData).map(([id,p]) =>
+        `<option value="${id}">${escapeHtml(p.name)}</option>`).join("");
+    provider.value = result.provider || "openai";
+    loadProviderModels(result.model);
+}
+
+function loadProviderModels(selectedModel="") {
+    const provider = document.getElementById("aiProvider")?.value;
+    const model = document.getElementById("aiModel");
+    if (!model || !provider || !aiProviderData[provider]) return;
+    model.innerHTML = aiProviderData[provider].models.map(m =>
+        `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join("");
+    if (selectedModel && aiProviderData[provider].models.includes(selectedModel)) model.value = selectedModel;
+}
+
+async function saveAIConfig() {
+    if (!isAdmin()) return;
+    const provider = document.getElementById("aiProvider").value;
+    const model = document.getElementById("aiModel").value;
+    const key = document.getElementById("apiKeyInput").value.trim();
+
+    const response = await fetch(API_URL, {
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:"save_ai_config", provider, model, key})
+    });
+    const result = await response.json();
+    document.getElementById("apiKeyInput").value = "";
+    if (!response.ok) {
+        showMessage(result.error || "Could not save AI configuration.", "error");
+        return;
+    }
+    showMessage(result.message || "AI configuration saved.");
+}
+
+async function runAI() {
+    if (!isAdmin()) return;
+    const prompt = document.getElementById("aiScript").value.trim();
+    const output = document.getElementById("aiResponse");
+    if (!prompt) {
+        showMessage("Write a prompt first.", "error");
+        return;
+    }
+
+    output.textContent = "AI is processing...";
+    const response = await fetch(API_URL, {
+        method:"POST", credentials:"same-origin",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:"ai_chat", prompt})
+    });
+    const result = await response.json();
+    if (!response.ok) {
+        output.textContent = "Error: " + (result.error || "AI request failed.");
+        return;
+    }
+    output.textContent = `[${result.provider} / ${result.model}]\\n\\n${result.result || "No response."}`;
+}
+
+
+
+/* =========================================================
+   FILE TO DATA URL
+========================================================= */
+
+function fileToDataURL(file) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                () => resolve(
+                    reader.result
+                );
+
+
+            reader.onerror =
+                reject;
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+}
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+async function initApp() {
+    currentUser = null;
+    document.getElementById("loginPage").style.display = "flex";
+    document.getElementById("app").style.display = "none";
+
+    const loginBtn = document.getElementById("loginBtn");
+    loginBtn.disabled = true;
+    loginBtn.textContent = "LOADING...";
+
+    const loaded = await loadDB();
+    if (loaded && currentUser) {
+        db = loaded;
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("app").style.display = "block";
+        updateHeader();
+        buildNavigation();
+        showPage("home");
+    }
+
+    loginBtn.disabled = false;
+    loginBtn.textContent = "LOGIN";
+    startChatPolling();
+}
+
+initApp();
+
+</script>
+
+</body>
+</html>
